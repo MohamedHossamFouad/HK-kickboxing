@@ -176,8 +176,8 @@ img { max-width: 100%; display: block; }
 
 /* Hero Section */
 .hero {
-    height: 100vh;
-    background: url('https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=2069&auto=format&fit=crop') no-repeat center center/cover;
+    height: 120vh;
+    background: url('images/2.jpg') no-repeat center center/cover;
     position: relative;
     display: flex;
     align-items: center;
@@ -448,8 +448,8 @@ img { max-width: 100%; display: block; }
 
 /* CTA Banner */
 .cta-banner {
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/2.jpg') center/cover;
-    padding: 170px 0;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/1 (2).jpg') center/cover;
+    padding: 200px 0;
     text-align: center;
 }
 
