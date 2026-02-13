@@ -33,9 +33,11 @@ const observerOptions = {
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+        // Toggle 'is-visible' class based on intersection state
         if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
+        } else {
+            entry.target.classList.remove('is-visible');
         }
     });
 }, observerOptions);
@@ -86,9 +88,9 @@ window.onscroll = function() {
 
 function scrollFunction() {
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        backToTopBtn.style.display = "block";
+        backToTopBtn.classList.add("show");
     } else {
-        backToTopBtn.style.display = "none";
+        backToTopBtn.classList.remove("show");
     }
 }
 

@@ -35,6 +35,55 @@ body {
     overflow-x: hidden;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+}
+
+/* Navigation Hover Effect */
+.nav-links li a {
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    padding-bottom: 5px;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: width 0.3s;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.nav-links li a:hover {
+    color: #fff;
+}
+
+/* Override default hover color changes if we use underline */
+
 h1,
 h2,
 h3,
@@ -793,8 +842,8 @@ footer {
 
 /* Back to Top Button */
 #backToTop {
-    display: none;
-    /* Hidden by default */
+    opacity: 0;
+    pointer-events: none;
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -808,12 +857,19 @@ footer {
     border-radius: 50%;
     font-size: 18px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s, transform 0.3s;
+    transform: scale(0.8);
+    transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+}
+
+#backToTop.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
 }
 
 #backToTop:hover {
     background-color: var(--color-accent-hover);
-    transform: translateY(-5px);
+    transform: scale(1.1);
 }
 
 /* Advanced Animations */
