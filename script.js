@@ -25,23 +25,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Simple Scroll Animation (Intersection Observer)
+// Scroll reveal with stagger (Intersection Observer)
 const observerOptions = {
-    threshold: 0.1
+    threshold: 0.15,
+    rootMargin: '0px 0px -10% 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // Animate once
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-document.querySelectorAll('.program-card, .feature-item, .gallery-item, .testimonial-card').forEach(el => {
-    el.classList.add('fade-in-up'); // Re-use CSS animation class logic if preferred or add specific opacity 0 start
-    // For now, let's keep it simple. If we want scroll animations, we might add opacity: 0 to these elements in CSS and set forwards on animation
+const revealGroups = [
+    '.program-card',
+    '.feature-item',
+    '.gallery-item',
+    '.testimonial-card',
+    '.about-text',
+    '.about-image',
+    '.schedule-card',
+    '.contact-info',
+    '.contact-form'
+];
+
+revealGroups.forEach(selector => {
+    const items = document.querySelectorAll(selector);
+    items.forEach((el, index) => {
+        el.classList.add('reveal');
+        const delay = Math.min(index * 0.08, 0.4);
+        el.style.setProperty('--delay', `${delay}s`);
+        observer.observe(el);
+    });
+});
+
+// Section title reveal
+document.querySelectorAll('.section-title').forEach((el, index) => {
+    el.classList.add('reveal');
+    el.style.setProperty('--delay', `${Math.min(index * 0.06, 0.3)}s`);
+    observer.observe(el);
 });
 
 // Form Submission (Demo)
