@@ -76,3 +76,32 @@ form.addEventListener('submit', (e) => {
     alert('Thank you for your interest! We will contact you soon.');
     form.reset();
 });
+
+// Back to Top Button Logic
+const backToTopBtn = document.getElementById("backToTop");
+
+window.onscroll = function() {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+}
+
+backToTopBtn.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+// Observe specific animations (Fade Left/Right)
+// We treat them separately so we don't accidentally add the default .reveal class
+const specificAnimations = document.querySelectorAll('.fade-in-left, .fade-in-right');
+specificAnimations.forEach(el => {
+    observer.observe(el);
+});
